@@ -1,16 +1,21 @@
 project(json11)
 
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.1)
 
 enable_testing()
 
-add_definitions(
-    -std=c++11
-    -fno-rtti
-    -fno-exceptions
-    -Wall
-    -Wextra
-    -Werror)
+
+if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+    message(STATUS "Using MSVC")
+else ()
+    add_definitions(
+        -std=c++11
+        -fno-rtti
+        -fno-exceptions
+        -Wall
+        -Wextra
+        -Werror)
+endif ()
 
 set(json11_SRCS json11.cpp)
 
